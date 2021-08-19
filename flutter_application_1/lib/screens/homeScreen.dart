@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/event_card.dart';
 import 'package:flutter_application_1/models/events.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -147,31 +148,7 @@ class HomeScreen extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         padding: EdgeInsets.all(30.0),
         itemCount: events.length,
-        itemBuilder: (_, index) => Card(
-          color: Colors.deepPurple[200],
-          elevation: 10,
-          shadowColor: Colors.deepPurple.shade400,
-          margin: EdgeInsets.symmetric(vertical: 8),
-          child: ListTile(
-            title: Text(
-              events[index].name,
-              style: TextStyle(fontSize: 20.0),
-            ),
-            subtitle: Text(
-                "${events[index].location} ${events[index].startDateTime}"),
-            leading: Icon(
-              Icons.local_airport,
-              size: 40.0,
-              color: Colors.lightBlue[400],
-            ),
-            trailing: IconButton(
-              icon: Icon(Icons.check_box_outline_blank),
-              onPressed: null,
-            ),
-            onTap: () => print("${events[index].name} - tap"),
-            onLongPress: () => print("${events[index].location} - longPress"),
-          ),
-        ),
+        itemBuilder: (_, index) => EventCard(event: events[index]),
         // index.toString(), // безконечный индекс....
       ),
 
